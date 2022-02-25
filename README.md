@@ -11,7 +11,7 @@
 
 > Website that allows users to login and create Todos form themselves
 
-<!-- ### 🏠 [Homepage](https://flamboyant-leakey-fe8698.netlify.app/) -->
+### 🏠 [Homepage](https://todoapp9dnsb.herokuapp.com/)
 
 ## Install
 
