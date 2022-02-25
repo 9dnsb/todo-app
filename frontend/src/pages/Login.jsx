@@ -12,6 +12,7 @@ import BoxForm from '../components/formFields/BoxForm'
 import SubmitButtonFormField from '../components/formFields/SubmitButtonFormField'
 import { defFormObj } from '../js/defaultObjects'
 import { setError } from '../js/setStateFormError'
+import ButtonFormField from '../components/formFields/ButtonFormField'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -75,6 +76,7 @@ function Login() {
               password={password}
             />
             <SubmitButtonFormField aName="Login" />
+            <ButtonFormField to={'/register'} text="Register a new account" />
           </>
         }
         onSubmit={onSubmit}

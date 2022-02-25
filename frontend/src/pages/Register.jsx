@@ -13,6 +13,8 @@ import SubmitButtonFormField from '../components/formFields/SubmitButtonFormFiel
 import TextFormField from '../components/formFields/TextFormField'
 import { defFormObj } from '../js/defaultObjects'
 import { setError } from '../js/setStateFormError'
+import { Link } from 'react-router-dom'
+import ButtonFormField from '../components/formFields/ButtonFormField'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -95,6 +97,10 @@ function Register() {
               aId="password2"
             />
             <SubmitButtonFormField aName="Register" />
+            <ButtonFormField
+              to={'/login'}
+              text="Sign in to an existing account"
+            />
           </>
         }
         onSubmit={onSubmit}

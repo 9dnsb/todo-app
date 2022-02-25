@@ -36,17 +36,16 @@ function Dashboard() {
     <>
       <TitleFormField aTitle={`Welcome ${user && user.name}`} />
 
-      <TitleFormField
-        aTitle={'Current Todo Items'}
-        align="left"
-        variant="subtitle1"
-        component="h3"
-      />
-
       {todos.length > 0 ? (
         <GridBox
           children={
             <>
+              <TitleFormField
+                aTitle={'Current Todo Items'}
+                align="left"
+                variant="subtitle1"
+                component="h3"
+              />
               {todos.map((todo, index) => (
                 <TodoItem todo={todo} index={index} key={index} />
               ))}
@@ -54,7 +53,12 @@ function Dashboard() {
           }
         ></GridBox>
       ) : (
-        <h3> You have not set any goals </h3>
+        <TitleFormField
+          aTitle={'You have not set any Todos'}
+          align="left"
+          variant="body1"
+          component="h2"
+        />
       )}
     </>
   )
