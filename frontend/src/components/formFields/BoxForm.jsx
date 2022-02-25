@@ -1,14 +1,19 @@
-import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
+import GridBox from '../GridBox'
 
 function BoxForm({ titleInfo, formInfo, onSubmit }) {
   return (
-    <Box sx={{ display: 'grid', gap: 2 }}>
-      {titleInfo}
-      <form noValidate onSubmit={onSubmit}>
-        <Box sx={{ display: 'grid', gap: 3 }}>{formInfo}</Box>{' '}
-      </form>
-    </Box>
+    <GridBox
+      gap={2}
+      children={
+        <>
+          {titleInfo}
+          <form noValidate onSubmit={onSubmit}>
+            <GridBox children={formInfo}></GridBox>
+          </form>
+        </>
+      }
+    ></GridBox>
   )
 }
 BoxForm.propTypes = {

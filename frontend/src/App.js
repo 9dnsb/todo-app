@@ -7,6 +7,8 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import CreateToDoPage from './pages/CreateToDoPage'
+import About from './pages/About'
 
 const theme = createTheme({
   palette: {},
@@ -30,6 +32,8 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/createTodo" element={<CreateToDoPage />} />
+              <Route path="/about" element={<About />} />
             </Routes>
           </Container>
         </Router>

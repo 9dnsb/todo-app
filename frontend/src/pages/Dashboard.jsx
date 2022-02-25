@@ -1,47 +1,61 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormControl from '@mui/material/FormControl'
-import FormLabel from '@mui/material/FormLabel'
 import TitleFormField from '../components/formFields/TitleFormField'
+import { getTodos, reset } from '../features/todos/toDoSlice'
+import Spinner from '../components/Spinner'
+import TodoItem from '../components/TodoItem'
+import GridBox from '../components/GridBox'
 
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [category, setCategory] = useState('todos')
 
   const { user } = useSelector((state) => state.auth)
-  // const { isLoading, isError, message } = useSelector((state) => state.goals)
-
+  const { todos, isLoadingGet, isErrorGet, messageGet } = useSelector(
+    (state) => state.todos
+  )
   useEffect(() => {
+    if (isErrorGet) {
+      console.log(messageGet)
+    }
+
     if (!user) {
       navigate('/login')
     }
-  }, [user, navigate, dispatch])
+    dispatch(getTodos())
+    return () => {
+      dispatch(reset())
+    }
+  }, [user, navigate, isErrorGet, messageGet, dispatch])
 
+  if (isLoadingGet) {
+    return <Spinner />
+  }
   return (
     <>
       <TitleFormField aTitle={`Welcome ${user && user.name}`} />
 
-      <FormControl>
-        <FormLabel>Note Category</FormLabel>
-        <RadioGroup
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <FormControlLabel value="money" control={<Radio />} label="Money" />
-          <FormControlLabel value="todos" control={<Radio />} label="Todos" />
-          <FormControlLabel
-            value="reminders"
-            control={<Radio />}
-            label="Reminders"
-          />
-          <FormControlLabel value="work" control={<Radio />} label="Work" />
-        </RadioGroup>
-      </FormControl>
+      <TitleFormField
+        aTitle={'Current Todo Items'}
+        align="left"
+        variant="subtitle1"
+        component="h3"
+      />
+
+      {todos.length > 0 ? (
+        <GridBox
+          children={
+            <>
+              {todos.map((todo, index) => (
+                <TodoItem todo={todo} index={index} key={index} />
+              ))}
+            </>
+          }
+        ></GridBox>
+      ) : (
+        <h3> You have not set any goals </h3>
+      )}
     </>
   )
 }

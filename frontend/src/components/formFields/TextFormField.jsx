@@ -1,12 +1,12 @@
 import TextField from '@mui/material/TextField'
 import PropTypes from 'prop-types'
 
-function TextFormField({ onChange, name }) {
+function TextFormField({ onChange, name, label }) {
   return (
     <TextField
       type="text"
-      label="Username"
-      id="name"
+      label={label}
+      id={name.name}
       variant="outlined"
       fullWidth
       required
@@ -19,6 +19,7 @@ function TextFormField({ onChange, name }) {
 TextFormField.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.object,
+  label: PropTypes.string,
 }
 
 export default TextFormField

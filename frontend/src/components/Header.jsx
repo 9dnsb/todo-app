@@ -16,11 +16,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 import { blue } from '@mui/material/colors'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import { defRouteObj } from '../js/defaultObjects'
 
 function Header() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const pages = ['Products', 'Pricing', 'Blog']
+  var pages = [defRouteObj('View Todos', '/'), defRouteObj('About', 'about')]
   var settings = [
     { name: 'Login', route: 'login' },
     { name: 'Register', route: 'register' },
@@ -29,6 +30,11 @@ function Header() {
   const { user } = useSelector((state) => state.auth)
   if (user) {
     settings = [{ name: 'Logout', route: 'logout' }]
+    pages = [
+      defRouteObj('View Todos', '/'),
+      defRouteObj('Create Todo', 'createTodo'),
+      defRouteObj('About', 'about'),
+    ]
   }
 
   const onLogout = () => {
@@ -49,8 +55,11 @@ function Header() {
     setAnchorElUser(event.currentTarget)
   }
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (setting) => {
     setAnchorElNav(null)
+    if (setting.route) {
+      navigate(setting.route)
+    }
   }
 
   const handleCloseUserMenu = () => {
@@ -109,8 +118,11 @@ function Header() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page.name}
+                  onClick={() => handleCloseNavMenu(page)}
+                >
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -126,11 +138,11 @@ function Header() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.name}
+                onClick={() => handleCloseNavMenu(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

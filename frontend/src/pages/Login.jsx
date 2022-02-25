@@ -6,16 +6,17 @@ import Spinner from '../components/Spinner'
 import { login, reset } from '../features/auth/authSlice'
 import EmailFormField from '../components/formFields/EmailFormField'
 import PasswordFormField from '../components/formFields/PasswordFormField'
-import { changeStateObjectData } from '../js/changeStateObjectData'
 import { onChangeFuncForm } from '../js/onChangeFuncForm'
 import TitleFormField from '../components/formFields/TitleFormField'
 import BoxForm from '../components/formFields/BoxForm'
 import SubmitButtonFormField from '../components/formFields/SubmitButtonFormField'
+import { defFormObj } from '../js/defaultObjects'
+import { setError } from '../js/setStateFormError'
 
 function Login() {
   const [formData, setFormData] = useState({
-    email: { aString: '', error: false },
-    password: { aString: '', error: false },
+    email: defFormObj('email'),
+    password: defFormObj('password'),
   })
 
   const { email, password } = formData
@@ -47,13 +48,7 @@ function Login() {
       password: password.aString,
     }
 
-    for (var key in formData) {
-      if (formData.hasOwnProperty(key)) {
-        if (formData[key]['aString'] === '') {
-          changeStateObjectData(setFormData, key, 'error', true)
-        }
-      }
-    }
+    setError(formData, setFormData)
     dispatch(login(userData))
   }
 

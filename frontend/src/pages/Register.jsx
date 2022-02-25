@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
-import { changeStateObjectData } from '../js/changeStateObjectData'
 import BoxForm from '../components/formFields/BoxForm'
 import TitleFormField from '../components/formFields/TitleFormField'
 import EmailFormField from '../components/formFields/EmailFormField'
@@ -12,13 +11,15 @@ import { onChangeFuncForm } from '../js/onChangeFuncForm'
 import PasswordFormField from '../components/formFields/PasswordFormField'
 import SubmitButtonFormField from '../components/formFields/SubmitButtonFormField'
 import TextFormField from '../components/formFields/TextFormField'
+import { defFormObj } from '../js/defaultObjects'
+import { setError } from '../js/setStateFormError'
 
 function Register() {
   const [formData, setFormData] = useState({
-    name: { aString: '', error: false },
-    email: { aString: '', error: false },
-    password: { aString: '', error: false },
-    password2: { aString: '', error: false },
+    name: defFormObj('name'),
+    email: defFormObj('email'),
+    password: defFormObj('password'),
+    password2: defFormObj('password2'),
   })
 
   const { name, email, password, password2 } = formData
@@ -45,13 +46,7 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    for (var key in formData) {
-      if (formData.hasOwnProperty(key)) {
-        if (formData[key]['aString'] === '') {
-          changeStateObjectData(setFormData, key, 'error', true)
-        }
-      }
-    }
+    setError(formData, setFormData)
 
     if (password.aString !== password2.aString) {
       toast.error('Passwords do not match')
@@ -83,6 +78,7 @@ function Register() {
             <TextFormField
               onChange={(e) => onChangeFuncForm(setFormData, e)}
               name={name}
+              label="Username"
             />
             <EmailFormField
               onChange={(e) => onChangeFuncForm(setFormData, e)}
