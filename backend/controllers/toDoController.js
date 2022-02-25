@@ -1,8 +1,8 @@
 const asyncHandler = require('express-async-handler')
 
 const Todo = require('../models/toDoModel')
-const UserModel = require('../models/UserModel')
-const User = require('../models/UserModel')
+const UserModel = require('../models/userModel')
+const User = require('../models/userModel')
 
 // @desc    Get todos
 // @route   GET /api/todos
