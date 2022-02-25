@@ -7,7 +7,7 @@ export function changeStateObjectData(
   setFormData((prevState) => ({
     ...prevState,
     [mainKey]: {
-      ...prevState[[mainKey]],
+      ...prevState[[mainKey.toString()]],
       [secondaryKey]: newData,
     },
   }))
