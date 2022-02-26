@@ -1,6 +1,5 @@
-import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
+
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import TitleFormField from '../components/formFields/TitleFormField'
@@ -16,12 +15,14 @@ import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
 import { setError } from '../js/setStateFormError'
 import { changeStateObjectData } from '../js/changeStateObjectData'
+import RadioFormControlLabel from '../components/formFields/RadioFormControlLabel'
 
 function CreateToDoPage() {
   const [formData, setFormData] = useState({
     text: defFormObj('text'),
     type: defFormObj('type'),
   })
+  const radioOptions = ['Groceries', 'Money', 'Reminders', 'Work']
 
   const { isLoadingCreate, isErrorCreate, isSuccessCreate, messageCreate } =
     useSelector((state) => state.todos)
@@ -53,12 +54,9 @@ function CreateToDoPage() {
     dispatch(createTodo(submitData))
   }
 
-  if (isLoadingCreate) {
-    return <Spinner />
-  }
-
   return (
     <>
+      {isLoadingCreate && <Spinner />}
       <BoxForm
         titleInfo={
           <>
@@ -85,26 +83,9 @@ function CreateToDoPage() {
                   value={type.aString}
                   onChange={(e) => onChangeFuncForm(setFormData, e, 'type')}
                 >
-                  <FormControlLabel
-                    value="money"
-                    control={<Radio />}
-                    label="Money"
-                  />
-                  <FormControlLabel
-                    value="todos"
-                    control={<Radio />}
-                    label="Todos"
-                  />
-                  <FormControlLabel
-                    value="reminders"
-                    control={<Radio />}
-                    label="Reminders"
-                  />
-                  <FormControlLabel
-                    value="work"
-                    control={<Radio />}
-                    label="Work"
-                  />
+                  {radioOptions.map((radio, index) => (
+                    <RadioFormControlLabel value={radio} key={index} />
+                  ))}
                 </RadioGroup>
               </fieldset>
             </FormControl>

@@ -33,6 +33,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/createTodo" element={<CreateToDoPage />} />
+              <Route path="/editTodo" element={<CreateToDoPage />} />
               <Route path="/about" element={<About />} />
             </Routes>
           </Container>

@@ -3,9 +3,19 @@ import toDoService from './toDoService'
 
 const initialState = {
   todos: [],
-  isError: false,
-  isSucces: false,
-  isLoading: false,
+  isErrorCreate: false,
+  isSuccessCreate: false,
+  isLoadingCreate: false,
+  isErrorGet: false,
+  isSuccessGet: false,
+  isLoadingGet: false,
+  isErrorDelete: false,
+  isSuccessDelete: false,
+  isLoadingDelete: false,
+  isErrorUpdate: false,
+  isSuccessUpdate: false,
+  isLoadingUpdate: false,
+
   message: '',
 }
 
@@ -66,6 +76,32 @@ export const deleteTodo = createAsyncThunk(
   }
 )
 
+// Delete user todo
+export const updateTodo = createAsyncThunk(
+  'todos/put',
+
+  async (toDoData, thunkAPI) => {
+    // console.log(toDoData)
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await toDoService.updateTodo(
+        toDoData.id,
+        { text: toDoData.text, type: toDoData.type },
+        token
+      )
+    } catch (error) {
+      console.log(error)
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const toDoSlice = createSlice({
   name: 'todo',
   initialState,
@@ -101,19 +137,37 @@ export const toDoSlice = createSlice({
         state.messageGet = action.payload
       })
       .addCase(deleteTodo.pending, (state) => {
-        state.isLoading = true
+        state.isLoadingDelete = true
       })
       .addCase(deleteTodo.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.isSuccess = true
+        state.isLoadingDelete = false
+        state.isSuccessDelete = true
         state.todos = state.todos.filter(
           (todo) => todo._id !== action.payload.id
         )
       })
       .addCase(deleteTodo.rejected, (state, action) => {
-        state.isLoading = false
-        state.isError = true
-        state.message = action.payload
+        state.isLoadingDelete = false
+        state.isErrorDelete = true
+        state.messageDelete = action.payload
+      })
+      .addCase(updateTodo.pending, (state) => {
+        state.isLoadingUpdate = true
+      })
+      .addCase(updateTodo.fulfilled, (state, action) => {
+        state.isLoadingUpdate = false
+        state.isSuccessUpdate = true
+        // console.log(action.payload)
+        state.todos = state.todos.map((item) =>
+          item._id === action.payload._id
+            ? { ...item, ...action.payload }
+            : item
+        )
+      })
+      .addCase(updateTodo.rejected, (state, action) => {
+        state.isLoadingUpdate = false
+        state.isErrorUpdate = true
+        state.messageUpdate = action.payload
       })
   },
 })
