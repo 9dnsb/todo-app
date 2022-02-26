@@ -13,7 +13,6 @@ import SubmitButtonFormField from '../components/formFields/SubmitButtonFormFiel
 import TextFormField from '../components/formFields/TextFormField'
 import { defFormObj } from '../js/defaultObjects'
 import { setError } from '../js/setStateFormError'
-import { Link } from 'react-router-dom'
 import ButtonFormField from '../components/formFields/ButtonFormField'
 
 function Register() {
