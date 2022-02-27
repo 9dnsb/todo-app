@@ -27,19 +27,21 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Header />
-          <Container maxWidth="sm" sx={{ mt: 4 }}>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/createTodo" element={<CreateToDoPage />} />
-              <Route path="/editTodo" element={<CreateToDoPage />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </Container>
+          <main>
+            <Container maxWidth="sm" sx={{ mt: 4 }}>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/createTodo" element={<CreateToDoPage />} />
+                <Route path="/editTodo" element={<CreateToDoPage />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </Container>
+            <ToastContainer />
+          </main>
         </Router>
       </ThemeProvider>
-      <ToastContainer />
     </>
   )
 }
