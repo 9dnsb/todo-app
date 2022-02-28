@@ -28,8 +28,7 @@ function About() {
             .
           </Typography>
           <Typography variant="body1" gutterBottom>
-            I've also tried to make my website as accessibile as possible. For
-            example my radio buttons are in a {'<fieldset>'}.
+            {accessibilityText}
           </Typography>
         </>
       }
