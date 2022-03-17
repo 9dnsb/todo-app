@@ -12,8 +12,8 @@ function About() {
           <TitleFormField aTitle="About" component="h1" />
           <Typography variant="body1" gutterBottom>
             This website is a simple Todo project. Its my first attempt creating
-            a website using the MERN stack. Its also my first time using
-            Material UI.
+            a website using the MERN stack. It uses Redux to manage state. Its
+            also my first time using Material UI.
           </Typography>
           <Typography variant="body1" gutterBottom>
             I spent a lot of time refactoring the website and have tried to
