@@ -13,7 +13,7 @@
     "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^14.0.0",
+    "@testing-library/user-event": "^14.0.1",
     "axios": "^0.26.1",
     "framer-motion": "^6.2.8",
     "npmtestdb99": "^1.0.8",
