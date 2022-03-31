@@ -73,13 +73,14 @@ function CreateToDoPage() {
 
             <FormControl>
               <fieldset>
-                <legend>
+                <legend id="note_category">
                   <FormLabel required error={type.error} sx={{ mx: 1 }}>
                     Note Category
                   </FormLabel>
                 </legend>
 
                 <RadioGroup
+                  aria-labelledby="note_category"
                   value={type.aString}
                   onChange={(e) => onChangeFuncForm(setFormData, e, 'type')}
                 >
