@@ -6,11 +6,11 @@ import Header from './components/Header'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { createTheme, ThemeProvider, StyledEngineProvider, adaptV4Theme } from '@mui/material/styles';
 import CreateToDoPage from './pages/CreateToDoPage'
 import About from './pages/About'
 
-const theme = createTheme({
+const theme = createTheme(adaptV4Theme({
   palette: {},
   typography: {
     fontFamily: 'Quicksand',
@@ -19,11 +19,11 @@ const theme = createTheme({
     fontWeightMedium: 600,
     fontWeightBold: 700,
   },
-})
+}))
 
 function App() {
-  return (
-    <>
+  return <>
+    <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <Router>
           <Header />
@@ -42,8 +42,8 @@ function App() {
           </main>
         </Router>
       </ThemeProvider>
-    </>
-  )
+    </StyledEngineProvider>
+  </>;
 }
 
 export default App

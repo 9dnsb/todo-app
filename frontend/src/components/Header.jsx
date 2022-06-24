@@ -149,7 +149,7 @@ function Header() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} size="large">
                 <Avatar sx={{ bgcolor: blue[800] }}>
                   <AccountCircleIcon />
                 </Avatar>
@@ -188,7 +188,7 @@ function Header() {
         </Toolbar>
       </Container>
     </AppBar>
-  )
+  );
 }
 
 export default Header
