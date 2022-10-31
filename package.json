@@ -22,11 +22,11 @@
     "express-async-handler": "^1.2.0",
     "express-rate-limit": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.5",
+    "mongoose": "^6.7.0",
     "react-icons": "^4.6.0"
   },
   "devDependencies": {
-    "concurrently": "^7.4.0",
+    "concurrently": "^7.5.0",
     "nodemon": "^2.0.20"
   }
 }
