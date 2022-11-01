@@ -60,7 +60,7 @@ function CreateToDoPage() {
       <BoxForm
         titleInfo={
           <>
-            <TitleFormField aTitle="Create Todo" />
+            <TitleFormField aTitle="Create To-do" />
           </>
         }
         formInfo={
@@ -68,7 +68,7 @@ function CreateToDoPage() {
             <TextFormField
               onChange={(e) => onChangeFuncForm(setFormData, e)}
               name={text}
-              label="Todo Title"
+              label="To-do Title"
             />
 
             <FormControl>
@@ -91,7 +91,7 @@ function CreateToDoPage() {
               </fieldset>
             </FormControl>
 
-            <SubmitButtonFormField aName="Create Todo" />
+            <SubmitButtonFormField aName="Create To-do" />
           </>
         }
         onSubmit={onSubmit}

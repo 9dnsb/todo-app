@@ -87,7 +87,7 @@ function Dashboard() {
         ></GridBox>
       ) : (
         <TitleFormField
-          aTitle={'You have not set any Todos'}
+          aTitle={'You have not set any To-dos'}
           align="left"
           variant="body1"
           component="h2"

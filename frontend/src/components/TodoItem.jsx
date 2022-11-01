@@ -46,7 +46,7 @@ function TodoItem({ todo, index }) {
           <Typography variant="body2">{text}</Typography>
         ) : (
           <TextField
-            label="Todo Title"
+            label="To-do Title"
             variant="standard"
             value={text}
             onChange={(e) => {

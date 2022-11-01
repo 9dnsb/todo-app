@@ -31,8 +31,8 @@ function Header() {
   if (user) {
     settings = [{ name: 'Logout', route: 'logout' }]
     pages = [
-      defRouteObj('View Todos', '/'),
-      defRouteObj('Create Todo', 'createTodo'),
+      defRouteObj('View To-dos', '/'),
+      defRouteObj('Create To-do', 'createTodo'),
       defRouteObj('About', 'about'),
     ]
   }
@@ -43,7 +43,7 @@ function Header() {
     navigate('/')
   }
 
-  const logoName = 'Todo App'
+  const logoName = 'To-do App'
 
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
@@ -149,7 +149,11 @@ function Header() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} size="large">
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0 }}
+                size="large"
+              >
                 <Avatar sx={{ bgcolor: blue[800] }}>
                   <AccountCircleIcon />
                 </Avatar>
@@ -188,7 +192,7 @@ function Header() {
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
 
 export default Header
