@@ -65,7 +65,7 @@ function Dashboard() {
             <>
               {/* {console.log(todos)} */}
               <TitleFormField
-                aTitle={'Current Todo Items'}
+                aTitle={'Current To-do Items'}
                 align="left"
                 variant="subtitle1"
                 component="h2"
