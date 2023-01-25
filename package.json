@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fontsource/quicksand": "^4.5.11",
-    "axios": "^1.2.2",
+    "@fontsource/quicksand": "^4.5.12",
+    "axios": "^1.2.4",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^16.0.3",
@@ -22,7 +22,7 @@
     "express-async-handler": "^1.2.0",
     "express-rate-limit": "^6.7.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.8.2",
+    "mongoose": "^6.8.4",
     "react-icons": "^4.7.1"
   },
   "devDependencies": {
